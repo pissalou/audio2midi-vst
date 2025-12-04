@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/universal:2
+FROM mcr.microsoft.com/devcontainers/cpp:2-ubuntu22.04
 
 RUN apt-get update && sudo apt install \
     libasound2-dev \
