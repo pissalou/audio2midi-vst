@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/devcontainers/cpp:2-ubuntu24.04
 
 ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt install \
+RUN apt-get update && apt install --yes \
     libasound2-dev \
     libx11-dev \
     libxinerama-dev \
