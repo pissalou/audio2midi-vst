@@ -1,8 +1,8 @@
 #pragma once
 
+#include "AudioPlayer.h"
 #include "PluginProcessor.h"
-#include "BinaryData.h"
-#include "melatonin_inspector/melatonin_inspector.h"
+#include <melatonin_inspector/melatonin_inspector.h>
 
 //==============================================================================
 class PluginEditor : public juce::AudioProcessorEditor
