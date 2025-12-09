@@ -6,5 +6,5 @@
 	},
 	"runArgs": [],
 	// Command to be executed after the container is created.
-	"postCreateCommand": ".devcontainer/post-create.sh"
+	"postCreateCommand": "bash .devcontainer/post-create.sh"
 }
