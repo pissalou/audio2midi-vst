@@ -10,5 +10,5 @@ cmake --build Builds --config Release --target audio2midi_All
 ## Run the standalone application
 
 ```shell
-./Builds/Pamplejuce_artefacts/Release/Standalone/audio2midi
+./Builds/audio2midi_artefacts/Release/Standalone/audio2midi
 ```
