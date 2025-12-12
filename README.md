@@ -4,11 +4,11 @@
 
 ```shell
 cmake -B Builds -DCMAKE_BUILD_TYPE=Release .
-cmake --build Builds --config Release --target Pamplejuce_All
+cmake --build Builds --config Release --target audio2midi_All
 ```
 
 ## Run the standalone application
 
 ```shell
-./Builds/Pamplejuce_artefacts/Release/Standalone/Pamplejuce\ Demo
+./Builds/Pamplejuce_artefacts/Release/Standalone/audio2midi
 ```
