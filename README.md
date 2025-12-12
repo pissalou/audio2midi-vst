@@ -7,6 +7,12 @@ cmake -B Builds -DCMAKE_BUILD_TYPE=Release .
 cmake --build Builds --config Release --target audio2midi_All
 ```
 
+## Unittest
+
+```shell
+ctest --test-dir Builds --verbose --output-on-failure
+```
+
 ## Run the standalone application
 
 ```shell
