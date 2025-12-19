@@ -119,6 +119,35 @@ bool PluginProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
   #endif
 }
 
+void PluginProcessor::processBlock (juce::AudioBuffer<double>& buffer,
+                                              juce::MidiBuffer& midiMessages)
+{
+    juce::ScopedNoDenormals noDenormals;
+    // TODO move code out to a utility function
+    // Allocate a temp float buffer (keeps your structure, but see reuse version below)
+    juce::AudioBuffer<float> temp (buffer.getNumChannels(), buffer.getNumSamples());
+    // ------- double -> float (explicit cast) -------
+    for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
+    {
+        const double* in  = buffer.getReadPointer (ch);
+        float*        out = temp.getWritePointer (ch);
+        for (int n = 0; n < buffer.getNumSamples(); ++n)
+            out[n] = static_cast<float> (in[n]);
+    }
+
+    // Process using the float path
+    juce::MidiBuffer midiCopy = midiMessages;
+    processBlock (temp, midiCopy);
+    // ------- float -> double (explicit cast back) -------
+    for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
+    {
+        const float*  in  = temp.getReadPointer (ch);
+        double*       out = buffer.getWritePointer (ch);
+        for (int n = 0; n < buffer.getNumSamples(); ++n)
+            out[n] = static_cast<double> (in[n]);
+    }
+}
+
 void PluginProcessor::processBlock (juce::AudioBuffer<float>& buffer,
                                               juce::MidiBuffer& midiMessages)
 {
